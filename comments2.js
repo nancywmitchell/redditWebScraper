@@ -13,17 +13,17 @@ const getComments = async () => {
         console.log('error is ', msg)
       })
 
-    // await page.goto('https://www.reddit.com/r/thebachelor/comments/cn6sv7/bip_s6e02_postepisode_discussion_thread/')
-    await page.goto('https://www.google.com/')
+    await page.goto('https://www.reddit.com/r/thebachelor/comments/cn6sv7/bip_s6e02_postepisode_discussion_thread/')
+    // await page.goto('https://www.google.com/')
 
     let scrapedData = await page.evaluate(() =>
     Array.from(
-    //   document.querySelectorAll(
-    //     ".commentarea p:not(.parent):not(.tagline)"
-    //   )
       document.querySelectorAll(
-        "a"
+        ".commentarea p:not(.parent):not(.tagline)"
       )
+    //   document.querySelectorAll(
+    //     "a"
+    //   )
     )
     .map(item => (item.innerText))
   )
